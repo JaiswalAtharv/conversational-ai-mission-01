@@ -375,7 +375,7 @@ def generate_gemini(prompt: str) -> str:
 
     client = genai.Client(api_key=api_key)
 
-    model = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+    model = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
 
     def operation() -> str:
         response = client.models.generate_content(
