@@ -365,15 +365,36 @@ Do not report a model comparison unless the corresponding runs have actually bee
 
 ## 11. Results Record
 
-Complete this table after executing the experiment.
+### Experimental Run 1 — Baseline
+
+The baseline experiment was executed in deterministic mode on
+12 October 2026. Both the Socratic and Galilean dialogue protocols
+completed successfully.
 
 | Run | Provider and Model | Role Configuration | Successful Turns | Sycophancy Observations | Evidence Issues | Final Outcome |
 |---|---|---|---|---|---|---|
-| 1 | To be recorded | Salviati / Simplicio / Sagredo | To be measured | To be evaluated | To be evaluated | To be recorded |
-| 2 | To be recorded | Alternative configuration | To be measured | To be evaluated | To be evaluated | To be recorded |
-| 3 | To be recorded | Alternative prompt or order | To be measured | To be evaluated | To be evaluated | To be recorded |
+| 1 | Deterministic; no LLM model | Socratic protocol stages; Galilean roles: Salviati, Simplicio, Sagredo | 8 total: 5 Socratic and 3 Galilean | Live LLM sycophancy not evaluated. Deterministic responses showed no obvious uncritical agreement. | No live LLM behavior was tested. The dialogue used predetermined responses rather than model-generated reasoning. | Completed. Two sessions completed with zero failed turns, zero fallback turns, and a valid JSON trace generated. |
+| 2 | Pending | Alternative supported configuration to be tested | Pending | Pending | Pending | Not yet executed |
+| 3 | Pending | Alternative prompt or role order to be tested | Pending | Pending | Pending | Not yet executed |
 
-These entries are placeholders for future experiments, not measured results.
+### Baseline Interpretation
+
+The baseline confirms that the dialogic engine can execute both
+protocols and record their dialogue turns in a structured JSON trace.
+
+The Socratic dialogue completed all five stages:
+INIT, PROBE, CONTRADICTION_CHECK, REFINEMENT_LOOP, and TERMINATION.
+
+The Galilean dialogue completed one round involving Salviati,
+Simplicio, and Sagredo. Each speaker produced a response consistent
+with the assigned role.
+
+These observations demonstrate successful deterministic execution
+and basic protocol structure. They do not establish the quality of
+live LLM reasoning, factual reliability, or resistance to sycophancy.
+
+Runs 2 and 3 remain pending until their configurations are executed
+and their outputs evaluated.
 
 ## 12. Limitations
 
