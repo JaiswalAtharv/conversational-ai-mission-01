@@ -365,57 +365,94 @@ Do not report a model comparison unless the corresponding runs have actually bee
 
 ## 11. Results Record
 
-### Experimental Run 1 — Baseline
-
-The baseline experiment was executed in deterministic mode on
-12 October 2026. Both the Socratic and Galilean dialogue protocols
-completed successfully.
+Three experiments were executed in deterministic mode on 12 October 2026.
+All runs completed successfully without failed turns or fallback turns.
+No live LLM provider was used.
 
 | Run | Provider and Model | Role Configuration | Successful Turns | Sycophancy Observations | Evidence Issues | Final Outcome |
 |---|---|---|---|---|---|---|
-| 1 | Deterministic; no LLM model | Socratic protocol stages; Galilean roles: Salviati, Simplicio, Sagredo | 8 total: 5 Socratic and 3 Galilean | Live LLM sycophancy not evaluated. Deterministic responses showed no obvious uncritical agreement. | No live LLM behavior was tested. The dialogue used predetermined responses rather than model-generated reasoning. | Completed. Two sessions completed with zero failed turns, zero fallback turns, and a valid JSON trace generated. |
-| 2 | Pending | Alternative supported configuration to be tested | Pending | Pending | Pending | Not yet executed |
-| 3 | Pending | Alternative prompt or role order to be tested | Pending | Pending | Pending | Not yet executed |
+| 1 | Deterministic; no LLM | Socratic stages and Galilean roles: Salviati, Simplicio, Sagredo | 8 total: 5 Socratic and 3 Galilean | Live LLM sycophancy was not tested. No obvious uncritical agreement appeared in the predetermined responses. | Responses were deterministic rather than model-generated. | Completed: 2 sessions, 0 failed turns, 0 fallback turns. |
+| 2 | Deterministic; no LLM | Same protocols and roles, alternative topic | 8 total: 5 Socratic and 3 Galilean | Live LLM sycophancy was not tested. | Responses remained essentially unchanged despite the topic change, indicating limited topic sensitivity in deterministic mode. | Completed: 2 sessions, 0 failed turns, 0 fallback turns. |
+| 3 | Deterministic; no LLM | Galilean roles: Salviati, Simplicio, Sagredo; 3 rounds | 9 Galilean turns | Live LLM sycophancy was not tested. | Each speaker repeated the same response across all three rounds, with no meaningful development of the arguments. | Completed: 1 session, 0 failed turns, 0 fallback turns. |
 
 ### Baseline Interpretation
 
-The baseline confirms that the dialogic engine can execute both
-protocols and record their dialogue turns in a structured JSON trace.
+Run 1 established that both dialogue protocols execute successfully.
+The Socratic protocol completed its five stages: INIT, PROBE,
+CONTRADICTION_CHECK, REFINEMENT_LOOP, and TERMINATION. The Galilean
+protocol completed one round with three speakers.
 
-The Socratic dialogue completed all five stages:
-INIT, PROBE, CONTRADICTION_CHECK, REFINEMENT_LOOP, and TERMINATION.
+Run 2 demonstrated that the engine accepts an alternative topic and
+executes both protocols. However, the deterministic responses remained
+essentially unchanged, indicating that the alternative topic did not
+meaningfully influence the generated dialogue.
 
-The Galilean dialogue completed one round involving Salviati,
-Simplicio, and Sagredo. Each speaker produced a response consistent
-with the assigned role.
+Run 3 demonstrated that the engine supports three Galilean rounds and
+produces nine turns. However, the speakers repeated their predetermined
+responses instead of developing their arguments across rounds.
 
-These observations demonstrate successful deterministic execution
-and basic protocol structure. They do not establish the quality of
-live LLM reasoning, factual reliability, or resistance to sycophancy.
+These experiments demonstrate successful execution, basic protocol
+structure, and multi-round handling. They do not establish the quality
+of live LLM reasoning, factual reliability, or resistance to sycophancy
+because no live LLM calls were made.
 
-Runs 2 and 3 remain pending until their configurations are executed
-and their outputs evaluated.
+All three runs completed with zero failed turns and zero fallback
+turns. Their JSON traces should be retained as experimental evidence.
 
 ## 12. Limitations
 
 The Galilean Sandbox has several limitations.
 
-First, different agent names or system prompts do not guarantee independent reasoning. Agents may share training data, architectural characteristics, and systematic biases.
+First, different agent names or system prompts do not guarantee
+independent reasoning. Agents may share training data, architectural
+characteristics, and systematic biases.
 
-Second, agents can reinforce one another's errors. A conclusion repeated by three agents is not necessarily more reliable than a conclusion produced by one.
+Second, agents can reinforce one another's errors. A conclusion
+repeated by three agents is not necessarily more reliable than a
+conclusion produced by one.
 
-Third, role instructions can shape the outcome. An Advocate instructed to defend a position may overlook counterevidence, while a Skeptic instructed to challenge it may exaggerate risks.
+Third, role instructions can shape the outcome. An Advocate instructed
+to defend a position may overlook counterevidence, while a Skeptic
+instructed to challenge it may exaggerate risks.
 
-Fourth, a mediator can appear neutral while applying unequal standards to the competing arguments.
+Fourth, a mediator can appear neutral while applying unequal standards
+to competing arguments.
 
-Finally, an internally coherent debate cannot replace empirical testing, external evidence, domain expertise, or democratic decision-making.
+Fifth, the deterministic experiments revealed limited topic sensitivity
+and conversational adaptation. Changing the topic did not meaningfully
+change the predetermined responses, and increasing the number of rounds
+caused speakers to repeat their responses rather than develop their
+arguments.
 
-The experiment should therefore be treated as a tool for examining arguments, not as an automatic mechanism for establishing ethical truth.
+Finally, an internally coherent debate cannot replace empirical testing,
+external evidence, domain expertise, or democratic decision-making.
+Because these experiments did not use a live LLM, they cannot establish
+real-world model reliability or resistance to sycophancy.
+
+The experiment should therefore be treated as a tool for examining
+argument structure, not as an automatic mechanism for establishing
+factual or ethical truth.
 
 ## 13. Conclusion
 
-The Galilean Sandbox adapts structured dialogue to multi-agent AI reasoning.
+The Galilean Sandbox adapts structured dialogue to multi-agent AI
+reasoning through three complementary roles. Salviati develops
+evidence-oriented arguments, Simplicio challenges assumptions, and
+Sagredo compares competing positions.
 
-Salviati develops an argument, Simplicio challenges its assumptions, and Sagredo evaluates the competing positions. Together, the roles create a framework for investigating difficult questions without requiring artificial consensus.
+The three deterministic experiments demonstrated that the engine can
+execute both dialogue protocols, accept an alternative topic, and run
+a multi-round Galilean dialogue. They also exposed an important
+limitation: predetermined responses do not meaningfully adapt to
+changes in topic or develop across repeated rounds.
 
-The central evaluation question is not whether the agents agree. It is whether the process produces better-supported arguments, exposes weaknesses, represents uncertainty honestly, and makes the reasoning behind the final conclusion transparent.
+The central evaluation question is not whether agents agree. It is
+whether the process produces better-supported arguments, exposes
+weaknesses, represents uncertainty honestly, and makes the reasoning
+behind a conclusion transparent.
+
+Future evaluation should use live model-generated responses, explicit
+criteria for evidence quality and sycophancy, and repeatable comparisons
+between configurations. Until those tests are conducted, the current
+results should be interpreted as evidence of protocol execution rather
+than proof of effective autonomous reasoning.
